@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Country Information Finder</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Country Information Finder</h1>
+
+    <form action="/search" method="POST">
+      <input
+        type="text"
+        name="country"
+        placeholder="Enter country name"
+        required
+      />
+      <button type="submit">Search</button>
+    </form>
+
+    <% if (error) { %>
+      <p class="error"><%= error %></p>
+    <% } %>
+
+    <% if (country) { %>
+      <div class="card">
+        <h2><%= country.name %></h2>
+        <img src="<%= country.flag %>" alt="Flag of <%= country.name %>" />
+        <p><strong>Capital:</strong> <%= country.capital %></p>
+        <p><strong>Population:</strong> <%= country.population %></p>
+        <p><strong>Region:</strong> <%= country.region %></p>
+      </div>
+    <% } %>
+  </div>
+</body>
+</html>
